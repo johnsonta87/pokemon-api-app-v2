@@ -8,13 +8,13 @@ export default function PokemonList({ pokemons }) {
 
   return (
     <PokemonGrid>
-      {pokemons.map((pokemon) => (
-        <Pokemon key={pokemon.name} details={pokemon} />
+      {pokemons.map((pokemon, index) => (
+        <Pokemon key={pokemon.name} id={index + 1} details={pokemon} />
       ))}
     </PokemonGrid>
   );
 }
 
 PokemonList.propTypes = {
-  pokemons: PropTypes.object.isRequired,
+  pokemons: PropTypes.array.isRequired,
 };

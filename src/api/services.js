@@ -8,3 +8,14 @@ export const getPokemons = async () => {
     console.log('We have the error in services', e);
   }
 };
+
+export const getDetails = async (id) => {
+  try {
+    if (id) {
+      const data = await API.get(`/${id}`);
+      return data;
+    }
+  } catch (e) {
+    console.log('We have the error in services', e);
+  }
+};

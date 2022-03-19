@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { PokemonStyles } from './PokemonStyles';
 
-export default function Pokemon({ details }) {
+import { useStateMachine } from 'little-state-machine';
+import { updateDetails } from '../../store/actions';
+
+import { PokemonButton } from './PokemonStyles';
+
+export default function Pokemon({ id, details }) {
+  // Global State
+  const { actions } = useStateMachine({ updateDetails });
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    actions.updateDetails({ id, name: details.name });
+  };
+
   return (
-    <PokemonStyles type="button">
+    <PokemonButton type="button" onClick={handleClick}>
       <img
         src={`https://img.pokemondb.net/sprites/x-y/normal/${details.name}.png`}
         alt={details.name}
       />
       <span className="button-name">{details.name}</span>
-    </PokemonStyles>
+    </PokemonButton>
   );
 }
 
 Pokemon.propTypes = {
+  id: PropTypes.number.isRequired,
   details: PropTypes.object.isRequired,
 };

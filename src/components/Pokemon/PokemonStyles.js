@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PokemonStyles = styled.button`
+export const PokemonButton = styled.button`
   cursor: pointer;
   text-transform: capitalize;
   background: rgba(173, 216, 230, 0.4);
