@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   colors: {
+    black: '#000000',
     white: '#ffffff',
     red: '#ff1111',
     tan: '#ffe4b5',
@@ -54,4 +55,5 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 25px !important;
     transition: 0.1s background ease-in;
   }
+
 `;

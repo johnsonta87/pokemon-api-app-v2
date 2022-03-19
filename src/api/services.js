@@ -18,3 +18,13 @@ export const getDetails = async (param) => {
     console.log('We have the error in services', e);
   }
 };
+
+export const getSpecies = async (param) => {
+  try {
+    const data = await API.get(`/pokemon-species/${param}`);
+
+    return data;
+  } catch (e) {
+    console.log('We have the error in services', e);
+  }
+};

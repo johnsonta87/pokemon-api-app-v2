@@ -13,12 +13,7 @@ import PokemonList from './PokemonList/PokemonList';
 
 export default function Dashboard() {
   // Global State
-  const {
-    state: {
-      details: { stats },
-    },
-    actions,
-  } = useStateMachine({ updateDetails });
+  const { actions } = useStateMachine({ updateDetails });
 
   const { data: pokemons, isLoading } = usePokemons();
 
@@ -27,6 +22,7 @@ export default function Dashboard() {
       id: '',
       name: '',
       stats: {},
+      species: {},
     });
   }, []);
 

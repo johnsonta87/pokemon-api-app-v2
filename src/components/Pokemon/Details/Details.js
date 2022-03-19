@@ -8,7 +8,8 @@ import { usePokemonDetails } from '../../../hooks';
 import { updateDetails } from '../../../store/actions';
 
 import { PokemonInfo, SinglePokemonStyles } from './DetailsStyles';
-import DetailsHeader from './DetailsHeader';
+import { DetailsHeader, Types, Species, Profile, Stats } from '.';
+import GridLayout from '../../Layouts/GridLayout';
 
 export default function Details() {
   // Global State
@@ -27,28 +28,32 @@ export default function Details() {
     }
   }, [id, isLoading]);
 
+  if (!stats) return null;
+
   if (isLoading) return <CircularProgress />;
 
   return (
-    <SinglePokemonStyles>
-      <PokemonInfo>
-        <DetailsHeader stats={stats} />
+    <GridLayout stats={stats}>
+      <SinglePokemonStyles>
+        <PokemonInfo>
+          <DetailsHeader stats={stats} />
 
-        <span className="above-poke-tabs" />
-        <div className="pokemon-tabs-wrapper">
-          <div>
-            <div className="pokemon-tabs">
-              <div types={stats?.types} />
+          <span className="above-poke-tabs" />
+          <div className="pokemon-tabs-wrapper">
+            <div>
+              <div className="pokemon-tabs">
+                <Types types={stats?.types} />
 
-              <div species={stats?.species} />
-              <div details={stats?.data} species={stats?.species} />
-              <div stats={stats} />
+                <Species />
+                <Profile details={stats} />
+                <Stats stats={stats.stats} />
 
-              <div species={stats?.species} />
+                <div species={stats?.species} />
+              </div>
             </div>
           </div>
-        </div>
-      </PokemonInfo>
-    </SinglePokemonStyles>
+        </PokemonInfo>
+      </SinglePokemonStyles>
+    </GridLayout>
   );
 }
