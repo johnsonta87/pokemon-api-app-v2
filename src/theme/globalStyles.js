@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   colors: {
+    white: '#ffffff',
+    red: '#ff1111',
+    tan: '#ffe4b5',
+
     grass: '#78C850',
     poison: '#A040A0',
     flying: '#A890F0',
@@ -43,10 +47,11 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     text-transform: capitalize;
-    background-color: #ADD8E6;
+    background-color: ${(props) => props.theme.colors.ice};
     min-width: 150px;
     margin-bottom: 1em !important;
     border-radius: 25px;
     border-radius: 25px !important;
+    transition: 0.1s background ease-in;
   }
 `;

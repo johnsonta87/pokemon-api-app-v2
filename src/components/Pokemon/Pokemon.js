@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { useStateMachine } from 'little-state-machine';
@@ -18,7 +18,10 @@ export default function Pokemon({ id, details }) {
   return (
     <PokemonButton type="button" onClick={handleClick}>
       <img
-        src={`https://img.pokemondb.net/sprites/x-y/normal/${details.name}.png`}
+        src={
+          `https://projectpokemon.org/images/normal-sprite/${details.name}.gif` ||
+          `https://img.pokemondb.net/sprites/x-y/normal/${details.name}.png`
+        }
         alt={details.name}
       />
       <span className="button-name">{details.name}</span>

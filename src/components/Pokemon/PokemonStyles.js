@@ -4,7 +4,7 @@ export const PokemonButton = styled.button`
   cursor: pointer;
   text-transform: capitalize;
   background: rgba(173, 216, 230, 0.4);
-  border: 2px solid #87ceeb;
+  border: 2px solid ${(props) => props.theme.colors.ice};
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const PokemonButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #87ceeb;
+    background-color: ${(props) => props.theme.colors.ice};
   }
 
   &:active {

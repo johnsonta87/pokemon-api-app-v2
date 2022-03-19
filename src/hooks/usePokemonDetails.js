@@ -6,7 +6,6 @@ export default function usePokemonDetails(id) {
     if (id) {
       const res = await getDetails(id);
 
-      console.log(res.data);
       return res.data;
     }
 
