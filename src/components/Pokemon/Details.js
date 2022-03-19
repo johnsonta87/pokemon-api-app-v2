@@ -20,10 +20,10 @@ export default function Details() {
   const { data: pokemon, isLoading } = usePokemonDetails(`pokemon/${id}`);
 
   useEffect(() => {
-    if (pokemon && !isLoading) {
-      actions.updateDetails({ data: pokemon });
+    if (id && pokemon && !isLoading) {
+      actions.updateDetails({ stats: pokemon });
     }
-  }, [id]);
+  }, [id, isLoading]);
 
   return (
     <SinglePokemonStyles>

@@ -18,7 +18,8 @@ export default function Dashboard() {
   useEffect(() => {
     actions.updateDetails({
       id: '',
-      data: {},
+      name: '',
+      stats: {},
     });
   }, []);
 
