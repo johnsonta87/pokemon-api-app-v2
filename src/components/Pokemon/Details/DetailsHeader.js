@@ -11,13 +11,6 @@ export default function DetailsHeader({ stats }) {
         <h2 className="pokemon-name">{stats?.name}</h2>
         <h4 className="pokemon-id">{`#${stats?.id}`}</h4>
       </div>
-
-      <div className="detail-image">
-        <img
-          src={`https://projectpokemon.org/images/normal-sprite/${stats?.name}.gif`}
-          alt={stats?.name}
-        />
-      </div>
     </DetailsHeaderStyles>
   );
 }

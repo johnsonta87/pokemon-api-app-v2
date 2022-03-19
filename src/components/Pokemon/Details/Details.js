@@ -40,16 +40,21 @@ export default function Details() {
 
           <span className="above-poke-tabs" />
           <div className="pokemon-tabs-wrapper">
-            <div>
-              <div className="pokemon-tabs">
-                <Types types={stats?.types} />
-
-                <Species />
-                <Profile details={stats} />
-                <Stats stats={stats.stats} />
-
-                <div species={stats?.species} />
+            <div className="pokemon-tabs">
+              <div className="detail-image">
+                <img
+                  src={`https://projectpokemon.org/images/normal-sprite/${stats?.name}.gif`}
+                  alt={stats?.name}
+                />
               </div>
+
+              <Types types={stats?.types} />
+
+              <Species />
+              <Profile details={stats} />
+              <Stats stats={stats.stats} />
+
+              <div species={stats?.species} />
             </div>
           </div>
         </PokemonInfo>

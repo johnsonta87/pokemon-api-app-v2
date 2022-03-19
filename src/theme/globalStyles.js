@@ -56,4 +56,122 @@ export const GlobalStyle = createGlobalStyle`
     transition: 0.1s background ease-in;
   }
 
+
+
+  .detail-header {
+    padding: 1em 1.5em;
+    color: ${(props) => props.theme.colors.white};
+    width: 100%;
+    display: block;
+    margin-bottom: 1em;
+    border-radius: 5px;
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+  }
+
+  .pokemon-type {
+    span {
+      padding: 0.5em;
+    }
+  }
+
+    .bug-type {
+      span {
+        background: ${(props) => props.theme.colors.bug};
+      }
+    }
+    .grass-type {
+      span {
+        background: ${(props) => props.theme.colors.grass};
+      }
+    }
+    .poison-type {
+      span {
+        background: ${(props) => props.theme.colors.poison};
+      }
+    }
+    .psychic-type {
+      span {
+        background: ${(props) => props.theme.colors.psychic};
+      }
+    }
+    .rock-type {
+      span {
+        background: ${(props) => props.theme.colors.rock};
+      }
+    }
+    .unknown-type {
+      span {
+        background: ${(props) => props.theme.colors.unknown};
+      }
+    }
+    .fire-type {
+      span {
+        background: ${(props) => props.theme.colors.fire};
+      }
+    }
+    .water-type {
+      span {
+        background: ${(props) => props.theme.colors.water};
+      }
+    }
+    .flying-type {
+      span {
+        background: ${(props) => props.theme.colors.flying};
+      }
+    }
+    .fighting-type {
+      span {
+        background: ${(props) => props.theme.colors.fighting};
+      }
+    }
+    .electric-type {
+      span {
+        background: ${(props) => props.theme.colors.electric};
+      }
+    }
+    .ghost-type {
+      span {
+        background: ${(props) => props.theme.colors.ghost};
+      }
+    }
+    .fairy-type {
+      span {
+        background: ${(props) => props.theme.colors.fairy};
+      }
+    }
+    .normal-type {
+      span {
+        background: ${(props) => props.theme.colors.normal};
+      }
+    }
+    .ice-type {
+      span {
+        background: ${(props) => props.theme.colors.ice};
+      }
+    }
+    .dark-type {
+      span {
+        background: ${(props) => props.theme.colors.dark};
+      }
+    }
+    .ground-type {
+      span {
+        background: ${(props) => props.theme.colors.ground};
+      }
+    }
+    .dragon-type {
+      span {
+        background: ${(props) => props.theme.colors.dragon};
+      }
+    }
+    .steel-type {
+      span {
+        background: ${(props) => props.theme.colors.steel};
+      }
+    }
+
 `;
