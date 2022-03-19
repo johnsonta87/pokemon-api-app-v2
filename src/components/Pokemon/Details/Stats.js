@@ -26,5 +26,5 @@ export default function Stats({ stats }) {
 }
 
 Stats.propTypes = {
-  stats: PropTypes.object.isRequired,
+  stats: PropTypes.array,
 };

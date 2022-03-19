@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const SinglePokemonStyles = styled.div`
   position: relative;
+  padding-top: 3em;
 `;
 
 export const PokemonInfo = styled.div`
@@ -49,7 +50,7 @@ export const PokemonInfo = styled.div`
     .detail-image {
       position: absolute;
       top: -150px;
-      left: 0;
+      right: 0;
       max-width: 300px;
 
       img {

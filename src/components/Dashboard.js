@@ -5,7 +5,7 @@ import { useStateMachine } from 'little-state-machine';
 
 // Hooks
 import { usePokemons } from '../hooks';
-import { updateDetails } from '../store/actions';
+import { updateDetails, updateDashboard } from '../store/actions';
 
 // Components
 import Details from './Pokemon/Details/Details';
@@ -13,7 +13,12 @@ import PokemonList from './PokemonList/PokemonList';
 
 export default function Dashboard() {
   // Global State
-  const { actions } = useStateMachine({ updateDetails });
+  const {
+    state: {
+      dashboard: { display },
+    },
+    actions,
+  } = useStateMachine({ updateDetails, updateDashboard });
 
   const { data: pokemons, isLoading } = usePokemons();
 
@@ -24,14 +29,18 @@ export default function Dashboard() {
       stats: {},
       species: {},
     });
+
+    actions.updateDashboard({
+      display: true,
+    });
   }, []);
 
   if (isLoading) return <CircularProgress />;
 
   return (
-    <div>
+    <main>
       <Details />
-      <PokemonList pokemons={pokemons.results} />
-    </div>
+      {display && <PokemonList pokemons={pokemons.results} />}
+    </main>
   );
 }

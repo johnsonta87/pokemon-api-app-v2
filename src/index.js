@@ -8,10 +8,11 @@ import App from './App';
 
 import { GlobalStyle, theme } from './theme/globalStyles';
 
-import { details } from './store/states';
+import { details, dashboard } from './store/states';
 
 createStore({
   details,
+  dashboard,
 });
 
 const queryClient = new QueryClient();

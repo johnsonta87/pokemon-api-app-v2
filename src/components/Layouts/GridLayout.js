@@ -28,6 +28,6 @@ export default function GridLayout({ children, stats }) {
 }
 
 GridLayout.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
   stats: PropTypes.object.isRequired,
 };

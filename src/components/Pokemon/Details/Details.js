@@ -4,12 +4,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useStateMachine } from 'little-state-machine';
 
 // Hooks
+import { Container } from '@mui/material';
 import { usePokemonDetails } from '../../../hooks';
 import { updateDetails } from '../../../store/actions';
 
 import { PokemonInfo, SinglePokemonStyles } from './DetailsStyles';
 import { DetailsHeader, Types, Species, Profile, Stats } from '.';
 import GridLayout from '../../Layouts/GridLayout';
+import GoBack from '../../GoBack';
 
 export default function Details() {
   // Global State
@@ -28,12 +30,18 @@ export default function Details() {
     }
   }, [id, isLoading]);
 
-  if (!stats) return null;
+  if (isLoading)
+    return (
+      <Container>
+        <CircularProgress />
+      </Container>
+    );
 
-  if (isLoading) return <CircularProgress />;
+  if (!stats || !pokemon || !id) return null;
 
   return (
     <GridLayout stats={stats}>
+      <GoBack />
       <SinglePokemonStyles>
         <PokemonInfo>
           <DetailsHeader stats={stats} />

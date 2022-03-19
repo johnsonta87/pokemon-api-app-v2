@@ -12,7 +12,7 @@ export const theme = {
     flying: '#A890F0',
     fire: '#F08030',
     fighting: '#C03028',
-    psyhic: '#F85888',
+    psychic: '#F85888',
     water: '#6890F0',
     bug: '#A8B820',
     dark: '#705848',
@@ -36,6 +36,15 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+  }
+
+  body {
+    background-color: rgb(255, 255, 240) !important;
+    font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif !important;
+  }
+
+  main {
+    position: relative;
   }
 
   a {

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
   text-align: center;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.red};
   color: ${(props) => props.theme.colors.white};
   padding: 10px 0;
