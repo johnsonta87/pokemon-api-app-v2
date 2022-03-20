@@ -1,12 +1,12 @@
 import Dashboard from './components/Dashboard';
 import Footer from './components/Layouts/Footer';
 import Header from './components/Layouts/Header';
-import Helmet from './components/Layouts/Helmet';
+import Head from './components/Layouts/Head';
 
 function App() {
   return (
     <div className="App">
-      <Helmet />
+      <Head />
 
       <Header />
       <Dashboard />

@@ -5,6 +5,7 @@ import { useStateMachine } from 'little-state-machine';
 import { updateDetails, updateDashboard } from '../../store/actions';
 
 import { PokemonButton } from './PokemonStyles';
+import { removeHyphen } from '../../utils/helpers';
 
 export default function Pokemon({ id, details }) {
   // Global State
@@ -25,7 +26,7 @@ export default function Pokemon({ id, details }) {
         src={`https://img.pokemondb.net/sprites/x-y/normal/${details.name}.png`}
         alt={details.name}
       />
-      <span className="button-name">{details.name}</span>
+      <span className="button-name">{removeHyphen(details.name)}</span>
     </PokemonButton>
   );
 }

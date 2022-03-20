@@ -65,10 +65,12 @@ export const GlobalStyle = createGlobalStyle`
     transition: 0.1s background ease-in;
   }
 
-
+  .capitalize {
+    text-transform: capitalize;
+  }
 
   .detail-header {
-    padding: 1em 1.5em;
+    padding: 0.5em 1em;
     color: ${(props) => props.theme.colors.white};
     width: 100%;
     display: block;

@@ -8,10 +8,13 @@ import { Container } from '@mui/material';
 import { usePokemonDetails } from '../../../hooks';
 import { updateDetails } from '../../../store/actions';
 
-import { PokemonInfo, SinglePokemonStyles } from './DetailsStyles';
-import { DetailsHeader, Types, Species, Profile, Stats } from '.';
+// Components
+import { DetailsHeader, Types, Species, Profile, Stats, Evolution } from '.';
 import GridLayout from '../../Layouts/GridLayout';
 import GoBack from '../../GoBack';
+
+// Styles
+import { PokemonInfo, SinglePokemonStyles } from './DetailsStyles';
 
 export default function Details() {
   // Global State
@@ -51,18 +54,17 @@ export default function Details() {
             <div className="pokemon-tabs">
               <div className="detail-image">
                 <img
-                  src={`https://projectpokemon.org/images/normal-sprite/${stats?.name}.gif`}
-                  alt={stats?.name}
+                  src={`https://projectpokemon.org/images/normal-sprite/${stats.name}.gif`}
+                  alt={stats.name}
                 />
               </div>
 
-              <Types types={stats?.types} />
+              <Types types={stats.types} />
 
               <Species />
               <Profile details={stats} />
               <Stats stats={stats.stats} />
-
-              <div species={stats?.species} />
+              <Evolution species={stats.species} />
             </div>
           </div>
         </PokemonInfo>

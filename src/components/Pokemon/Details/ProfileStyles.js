@@ -7,6 +7,8 @@ export const ProfileStyles = styled.div`
   .pokemon-profile-row {
     display: flex;
     margin: 0 auto 15px;
+    line-height: 1;
+
     > strong {
       flex-basis: 20%;
       -webkit-box-flex: 1;
@@ -16,6 +18,7 @@ export const ProfileStyles = styled.div`
       flex-shrink: 1;
       margin-right: 3px;
     }
+
     > p {
       -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
@@ -26,6 +29,7 @@ export const ProfileStyles = styled.div`
       flex-shrink: 1;
       margin: 0 2px;
     }
+
     .abilities-slot {
       text-transform: capitalize;
     }
