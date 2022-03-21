@@ -16,19 +16,21 @@ export default function Evolution({ evolutionChain, evolvesFrom }) {
   const {
     actions,
     state: {
-      details: { evolution },
+      details: { id, evolution },
     },
   } = useStateMachine({ updateDetails });
+
+  const { chain } = evolution;
 
   const { data: evolutionChainData, isLoading } = useApiQuery(
     evolutionChain?.url
   );
 
   useEffect(() => {
-    if (evolutionChain && evolutionChainData && !isLoading) {
-      actions.updateDetails({ evolution: evolutionChainData });
+    if (id && evolutionChainData && !isLoading) {
+      actions.updateDetails({ evolution: { chain: evolutionChainData } });
     }
-  }, [evolutionChain, isLoading]);
+  }, [id, isLoading]);
 
   if (isLoading) return <CircularProgress />;
 
@@ -38,7 +40,7 @@ export default function Evolution({ evolutionChain, evolvesFrom }) {
         <h2>Evolution Chain</h2>
       </div>
       Evolves to{' '}
-      {evolution?.chain?.evolves_to.map((pokemon) => (
+      {chain?.evolves_to.map((pokemon) => (
         <span>
           <img
             src={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon?.species?.name}.png`}
@@ -48,7 +50,7 @@ export default function Evolution({ evolutionChain, evolvesFrom }) {
         </span>
       ))}{' '}
       at{' '}
-      {evolution?.chain?.evolves_to.map((pokemon) => (
+      {chain?.evolves_to.map((pokemon) => (
         <strong>{pokemon?.evolution_details[0].min_level}</strong>
       ))}{' '}
       level.
