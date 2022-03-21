@@ -18,6 +18,7 @@ export default function GoBack() {
       name: '',
       stats: {},
       species: {},
+      evolution: {},
     });
 
     actions.updateDashboard({

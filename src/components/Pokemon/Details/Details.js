@@ -21,7 +21,7 @@ export default function Details() {
   const {
     actions,
     state: {
-      details: { id, stats },
+      details: { id, stats, species },
     },
   } = useStateMachine({ updateDetails });
 
@@ -64,7 +64,10 @@ export default function Details() {
               <Species />
               <Profile details={stats} />
               <Stats stats={stats.stats} />
-              <Evolution species={stats.species} />
+              <Evolution
+                evolutionChain={species.evolution_chain}
+                evolvesFrom={species.evolves_from_species}
+              />
             </div>
           </div>
         </PokemonInfo>

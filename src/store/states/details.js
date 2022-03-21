@@ -3,4 +3,5 @@ export default {
   name: '',
   stats: {},
   species: {},
+  evolution: {},
 };

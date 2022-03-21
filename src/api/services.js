@@ -1,3 +1,4 @@
+import axios from 'axios';
 import API from './api';
 
 export const getPokemons = async () => {
@@ -27,4 +28,10 @@ export const getSpecies = async (param) => {
   } catch (e) {
     console.log('We have the error in services', e);
   }
+};
+
+export const queryUrl = async (url) => {
+  const data = await axios.get(url);
+
+  return data;
 };
