@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { CircularProgress } from '@mui/material';
@@ -11,18 +11,9 @@ import NextEvolution from './NextEvolution';
 import PreviousEvolution from './PreviousEvolution';
 
 export default function Evolution({ evolutionChain, name }) {
-  const {
-    data: evolutionChainData,
-    isLoading,
-    refetch,
-  } = useApiQuery(evolutionChain?.url);
-
-  useEffect(() => {
-    // we refetch data for when it's changed
-    if (evolutionChain && isLoading) {
-      refetch();
-    }
-  }, [evolutionChain, name, isLoading]);
+  const { data: evolutionChainData, isLoading } = useApiQuery(
+    evolutionChain?.url
+  );
 
   if (isLoading || !evolutionChainData) return <CircularProgress />;
 
