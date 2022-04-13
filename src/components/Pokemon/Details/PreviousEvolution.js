@@ -9,7 +9,7 @@ export default function PreviousEvolution({ name, evolutionChainData }) {
     evolutionChainData
   )?.species?.name.toString();
   const evolutionLevel = getPreviousEvolution(name, evolutionChainData)
-    ?.evolution_details[0]?.min_level;
+    ?.evolves_to[0]?.evolution_details[0]?.min_level;
 
   return (
     <div>
@@ -21,10 +21,14 @@ export default function PreviousEvolution({ name, evolutionChainData }) {
         />
         <strong>{evolutionName}</strong>
       </span>
-      at level
-      <span>
-        <strong>{evolutionLevel}</strong>
-      </span>
+      {evolutionLevel && (
+        <>
+          at level
+          <span>
+            <strong>{evolutionLevel}</strong>
+          </span>
+        </>
+      )}
     </div>
   );
 }

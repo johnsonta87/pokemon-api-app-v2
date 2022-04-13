@@ -21,10 +21,14 @@ export default function NextEvolution({ name, evolutionChainData }) {
         />
         <strong>{evolutionName}</strong>
       </span>
-      at level
-      <span>
-        <strong>{evolutionLevel}</strong>
-      </span>
+      {evolutionLevel && (
+        <>
+          at level
+          <span>
+            <strong>{evolutionLevel}</strong>
+          </span>
+        </>
+      )}
     </div>
   );
 }

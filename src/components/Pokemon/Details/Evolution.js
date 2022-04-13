@@ -17,6 +17,8 @@ export default function Evolution({ evolutionChain, name }) {
 
   if (isLoading || !evolutionChainData) return <CircularProgress />;
 
+  if (evolutionChainData?.evolves_to.length === 0) return null;
+
   return (
     <EvolutionStyles>
       <div className="detail-header">
