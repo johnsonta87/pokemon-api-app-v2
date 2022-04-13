@@ -19,7 +19,7 @@ export default function Evolution({ evolutionChain, name }) {
     if (evolutionChain && isLoading) {
       refetch();
     }
-  }, [evolutionChain, isLoading]);
+  }, [evolutionChain, name, isLoading]);
 
   if (isLoading || !evolutionChainData) return <CircularProgress />;
 
