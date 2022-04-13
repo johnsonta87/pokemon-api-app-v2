@@ -9,6 +9,7 @@ export function capitalize(string) {
 }
 
 export function getNextEvolution(name, chain) {
+  // we assume maximum 3 levels of chain for now
   const chainLevel1 = chain && chain?.evolves_to.map((pokemon) => pokemon);
   const chainLevel2 = chain && chain?.evolves_to[0]?.evolves_to;
 

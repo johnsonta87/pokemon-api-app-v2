@@ -6,7 +6,7 @@ import { CircularProgress } from '@mui/material';
 import useApiQuery from '../../../hooks/useApiQuery';
 
 import { EvolutionStyles } from './EvolutionStyles';
-import { capitalize, getNextEvolution } from '../../../utils/helpers';
+import { getNextEvolution } from '../../../utils/helpers';
 
 export default function Evolution({ evolutionChain, name }) {
   const {
@@ -16,13 +16,14 @@ export default function Evolution({ evolutionChain, name }) {
   } = useApiQuery(evolutionChain?.url);
 
   useEffect(() => {
-    if (evolutionChainData && !isLoading) {
+    if (evolutionChain && isLoading) {
       refetch();
     }
-  }, [isLoading]);
+  }, [evolutionChain, isLoading]);
 
   if (isLoading || !evolutionChainData) return <CircularProgress />;
 
+  // get evolved level and name from chain we pass in
   const evolutionName = getNextEvolution(
     name,
     evolutionChainData
@@ -30,6 +31,7 @@ export default function Evolution({ evolutionChain, name }) {
   const evolutionLevel = getNextEvolution(name, evolutionChainData)
     ?.evolution_details[0]?.min_level;
 
+  // Don't render component if chain level is null from maximum chain level reached
   if (!getNextEvolution(name, evolutionChainData)) return null;
 
   return (
