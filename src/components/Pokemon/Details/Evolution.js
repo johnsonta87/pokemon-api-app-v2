@@ -10,7 +10,7 @@ import { updateDetails } from '../../../store/actions';
 
 import { EvolutionStyles } from './EvolutionStyles';
 
-export default function Evolution({ evolutionChain, evolvesFrom }) {
+export default function Evolution({ evolutionChain }) {
   // Global State
   const {
     actions,
@@ -61,5 +61,4 @@ export default function Evolution({ evolutionChain, evolvesFrom }) {
 
 Evolution.propTypes = {
   evolutionChain: PropTypes.object,
-  evolvesFrom: PropTypes.object,
 };
