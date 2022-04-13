@@ -6,7 +6,9 @@ import { CircularProgress } from '@mui/material';
 import useApiQuery from '../../../hooks/useApiQuery';
 
 import { EvolutionStyles } from './EvolutionStyles';
-import { getNextEvolution } from '../../../utils/helpers';
+import { getPreviousEvolution, getNextEvolution } from '../../../utils/helpers';
+import NextEvolution from './NextEvolution';
+import PreviousEvolution from './PreviousEvolution';
 
 export default function Evolution({ evolutionChain, name }) {
   const {
@@ -16,6 +18,7 @@ export default function Evolution({ evolutionChain, name }) {
   } = useApiQuery(evolutionChain?.url);
 
   useEffect(() => {
+    // we refetch data for when it's changed
     if (evolutionChain && isLoading) {
       refetch();
     }
@@ -23,35 +26,21 @@ export default function Evolution({ evolutionChain, name }) {
 
   if (isLoading || !evolutionChainData) return <CircularProgress />;
 
-  // get evolved level and name from chain we pass in
-  const evolutionName = getNextEvolution(
-    name,
-    evolutionChainData
-  )?.species?.name.toString();
-  const evolutionLevel = getNextEvolution(name, evolutionChainData)
-    ?.evolution_details[0]?.min_level;
-
-  // Don't render component if chain level is null from maximum chain level reached
-  if (!getNextEvolution(name, evolutionChainData)) return null;
-
   return (
     <EvolutionStyles>
       <div className="detail-header">
         <h2>Evolution Chain</h2>
       </div>
       <div className="evolution-chain-wrapper">
-        Evolves to
-        <span>
-          <img
-            src={`https://img.pokemondb.net/sprites/x-y/normal/${evolutionName}.png`}
-            alt={evolutionName}
+        {getPreviousEvolution(name, evolutionChainData) && (
+          <PreviousEvolution
+            name={name}
+            evolutionChainData={evolutionChainData}
           />
-          <strong>{evolutionName}</strong>
-        </span>
-        at level
-        <span>
-          <strong>{evolutionLevel}</strong>
-        </span>
+        )}
+        {getNextEvolution(name, evolutionChainData) && (
+          <NextEvolution name={name} evolutionChainData={evolutionChainData} />
+        )}
       </div>
     </EvolutionStyles>
   );

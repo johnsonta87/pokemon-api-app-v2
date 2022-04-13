@@ -42,7 +42,7 @@ export default function Details() {
       </Container>
     );
 
-  if (!stats || !pokemon || !id) return null;
+  if (!stats || !id) return null;
 
   return (
     <GridLayout stats={stats}>
