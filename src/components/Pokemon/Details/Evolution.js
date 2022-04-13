@@ -29,6 +29,8 @@ export default function Evolution({ evolutionChain, evolvesFrom }) {
     if (id && evolutionChainData && !isLoading) {
       actions.updateDetails({ evolution: { chain: evolutionChainData } });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, isLoading]);
 
   if (isLoading) return <CircularProgress />;
