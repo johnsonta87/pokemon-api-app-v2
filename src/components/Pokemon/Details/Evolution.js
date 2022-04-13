@@ -1,59 +1,49 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { useStateMachine } from 'little-state-machine';
-
 import { CircularProgress } from '@mui/material';
 
 import useApiQuery from '../../../hooks/useApiQuery';
-import { updateDetails } from '../../../store/actions';
 
 import { EvolutionStyles } from './EvolutionStyles';
+import { getNextEvolution } from '../../../utils/helpers';
 
-export default function Evolution({ evolutionChain }) {
-  // Global State
+export default function Evolution({ evolutionChain, name }) {
   const {
-    actions,
-    state: {
-      details: { id, evolution },
-    },
-  } = useStateMachine({ updateDetails });
-
-  const { chain } = evolution;
-
-  const { data: evolutionChainData, isLoading } = useApiQuery(
-    evolutionChain?.url
-  );
+    data: evolutionChainData,
+    isLoading,
+    refetch,
+  } = useApiQuery(evolutionChain?.url);
 
   useEffect(() => {
-    if (id && evolutionChainData && !isLoading) {
-      actions.updateDetails({ evolution: { chain: evolutionChainData } });
+    if (evolutionChainData && !isLoading) {
+      refetch();
     }
+  }, [isLoading]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, isLoading]);
+  if (isLoading || !evolutionChainData) return <CircularProgress />;
 
-  if (isLoading) return <CircularProgress />;
+  const evolutionName = getNextEvolution(
+    name,
+    evolutionChainData
+  )?.species?.name.toString();
+  const evolutionLevel = getNextEvolution(name, evolutionChainData)
+    ?.evolution_details[0]?.min_level;
 
   return (
     <EvolutionStyles>
       <div className="detail-header">
         <h2>Evolution Chain</h2>
       </div>
-      Evolves to{' '}
-      {chain?.evolves_to.map((pokemon) => (
-        <span>
-          <img
-            src={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon?.species?.name}.png`}
-            alt={pokemon?.species?.name}
-          />
-          <strong>{pokemon?.species?.name}</strong>
-        </span>
-      ))}{' '}
-      at{' '}
-      {chain?.evolves_to.map((pokemon) => (
-        <strong>{pokemon?.evolution_details[0].min_level}</strong>
-      ))}{' '}
+      Evolves to
+      <span>
+        <img
+          src={`https://img.pokemondb.net/sprites/x-y/normal/${evolutionName}.png`}
+          alt={evolutionName}
+        />
+        <strong>{evolutionName}</strong>
+      </span>
+      at <strong>{evolutionLevel}</strong>
       level.
     </EvolutionStyles>
   );
@@ -61,4 +51,5 @@ export default function Evolution({ evolutionChain }) {
 
 Evolution.propTypes = {
   evolutionChain: PropTypes.object,
+  name: PropTypes.string,
 };

@@ -31,7 +31,11 @@ export const getSpecies = async (param) => {
 };
 
 export const queryUrl = async (url) => {
-  const data = await axios.get(url);
+  try {
+    const data = await API.get(url);
 
-  return data;
+    return data;
+  } catch (e) {
+    console.log('We have the error in services', e);
+  }
 };

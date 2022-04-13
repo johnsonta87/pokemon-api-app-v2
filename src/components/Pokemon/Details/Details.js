@@ -67,6 +67,7 @@ export default function Details() {
               <Profile details={stats} />
               <Stats stats={stats.stats} />
               <Evolution
+                name={stats?.name}
                 evolutionChain={species.evolution_chain}
                 evolvesFrom={species.evolves_from_species}
               />

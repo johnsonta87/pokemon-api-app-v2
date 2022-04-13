@@ -28,7 +28,6 @@ export default function Dashboard() {
       name: '',
       stats: {},
       species: {},
-      evolution: {},
     });
 
     actions.updateDashboard({
