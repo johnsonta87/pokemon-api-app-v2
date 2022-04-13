@@ -34,6 +34,8 @@ export default function Dashboard() {
     actions.updateDashboard({
       display: true,
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoading) return <CircularProgress />;

@@ -30,6 +30,8 @@ export default function Species() {
     if (id && speciesData && !isLoading) {
       actions.updateDetails({ species: speciesData });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, isLoading]);
 
   if (isLoading) return <CircularProgress />;

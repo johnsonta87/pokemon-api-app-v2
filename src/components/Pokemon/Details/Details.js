@@ -31,6 +31,8 @@ export default function Details() {
     if (id && pokemon && !isLoading) {
       actions.updateDetails({ stats: pokemon });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, isLoading]);
 
   if (isLoading)

@@ -9,7 +9,6 @@ import useApiQuery from '../../../hooks/useApiQuery';
 import { updateDetails } from '../../../store/actions';
 
 import { EvolutionStyles } from './EvolutionStyles';
-import { capitalize } from '../../../utils/helpers';
 
 export default function Evolution({ evolutionChain, evolvesFrom }) {
   // Global State
