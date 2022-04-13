@@ -6,7 +6,7 @@ import { CircularProgress } from '@mui/material';
 import useApiQuery from '../../../hooks/useApiQuery';
 
 import { EvolutionStyles } from './EvolutionStyles';
-import { getNextEvolution } from '../../../utils/helpers';
+import { capitalize, getNextEvolution } from '../../../utils/helpers';
 
 export default function Evolution({ evolutionChain, name }) {
   const {
@@ -30,21 +30,27 @@ export default function Evolution({ evolutionChain, name }) {
   const evolutionLevel = getNextEvolution(name, evolutionChainData)
     ?.evolution_details[0]?.min_level;
 
+  if (!getNextEvolution(name, evolutionChainData)) return null;
+
   return (
     <EvolutionStyles>
       <div className="detail-header">
         <h2>Evolution Chain</h2>
       </div>
-      Evolves to
-      <span>
-        <img
-          src={`https://img.pokemondb.net/sprites/x-y/normal/${evolutionName}.png`}
-          alt={evolutionName}
-        />
-        <strong>{evolutionName}</strong>
-      </span>
-      at <strong>{evolutionLevel}</strong>
-      level.
+      <div className="evolution-chain-wrapper">
+        Evolves to
+        <span>
+          <img
+            src={`https://img.pokemondb.net/sprites/x-y/normal/${evolutionName}.png`}
+            alt={evolutionName}
+          />
+          <strong>{evolutionName}</strong>
+        </span>
+        at level
+        <span>
+          <strong>{evolutionLevel}</strong>
+        </span>
+      </div>
     </EvolutionStyles>
   );
 }

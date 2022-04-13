@@ -10,12 +10,14 @@ export function capitalize(string) {
 
 export function getNextEvolution(name, chain) {
   const chainLevel1 = chain && chain?.evolves_to.map((pokemon) => pokemon);
+  const chainLevel2 = chain && chain?.evolves_to[0]?.evolves_to;
 
-  if (name === chainLevel1?.species?.name.toString()) {
-    const chainLevel2 =
-      chain && chain?.evolves_to[0]?.evolves_to.map((pokemon) => pokemon);
+  if (name === chainLevel1[0]?.species?.name.toString()) {
+    return chainLevel2[0];
+  }
 
-    return chainLevel2?.species?.name.toString();
+  if (name === chainLevel2[0]?.species?.name.toString()) {
+    return null;
   }
 
   return chainLevel1[0];
